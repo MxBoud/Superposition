@@ -22,6 +22,7 @@ public class ActiveObjectManager : MonoBehaviour {
 		
 	}
 	void OnMouseDown() {
+        sceneManager.SceneObjectMouseDown();
 		
 		if (!background) {
 			sceneManager.SetActiveObject (this); 
@@ -46,12 +47,16 @@ public class ActiveObjectManager : MonoBehaviour {
 			activeIndicator.SetActive (false);
 		}
 	}
-	void OnMouseOver(){
-        //To do : Program a cooldown
-		if (Input.GetMouseButtonDown(1)) {
-			sceneManager.ToggleInspector ();
-			
-		}
+	void OnMouseOver(){ // If the current selection is active toggle inspector
+        if (activeIndicator.activeSelf){
+            //To do : Program a cooldown
+            if (Input.GetMouseButtonDown(1))
+            {
+                sceneManager.ToggleInspector();
+
+            }
+        }
+
 	}
 
    // public void OnPointerClick(PointerEventData eventData)

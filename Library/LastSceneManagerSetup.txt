@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/ChargeScene.unity
+- path: Assets/Scripts/UIDragDrop/UIDragDrop.unity
   isLoaded: 1
   isActive: 1

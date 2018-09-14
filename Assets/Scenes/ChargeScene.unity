@@ -1372,8 +1372,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inspector: {fileID: 367256341}
   inspectorState: 0
-  chargeContainer: {fileID: 0}
-  chargePrefab: {fileID: 0}
+  chargeContainer: {fileID: 1747906736}
+  chargePrefab: {fileID: 1817623775179116, guid: 1321d8c6709624a2d8aa382e2db0da5f,
+    type: 2}
 --- !u!4 &1945478448
 Transform:
   m_ObjectHideFlags: 0
@@ -1393,7 +1394,7 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1945478446}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

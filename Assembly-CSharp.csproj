@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BackGroundHandler.cs" />
     <Compile Include="Assets\Desuet\ChargeInfoManagerController.cs" />
     <Compile Include="Assets\Scripts\ActiveObjectManager.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -73,8 +74,8 @@
     <Compile Include="Assets\Scripts\NetForceController.cs" />
     <Compile Include="Assets\Scripts\RotateZAxis.cs" />
     <Compile Include="Assets\Scripts\SceneManager.cs" />
-    <Compile Include="Assets\Scripts\SceneSettingsManager.cs" />
     <Compile Include="Assets\Scripts\UIController.cs" />
+    <Compile Include="Assets\Scripts\UIDragDrop\DragHandler.cs" />
     <Compile Include="Assets\Scripts\UserController.cs" />
     <Compile Include="Assets\Scripts\VectorController.cs" />
     <Reference Include="UnityEditor.StandardEvents">

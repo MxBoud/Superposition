@@ -9,7 +9,7 @@ public class ChargeController : MonoBehaviour
     public GameObject vectorPrefab;
     public int parentChildCount;
    // public ChargeInfoManagerController chargeInfoManagerController;
-	private SceneSettingsManager sceneSettingsManager; 
+	
 
 
 	public bool showResultingVector = false; 
@@ -76,15 +76,15 @@ public class ChargeController : MonoBehaviour
 			if (true) { //sceneSettingsManager.allVectorsAtOrigin) {
 				vectorOrigin = iI.charge2Transform.position;
 			} 
-			else {
-				if (vectorIndex > 0) {
-					VectorController previousVector = iI.interactionVector.transform.parent.GetChild (vectorIndex - 1).GetComponent<VectorController>(); 
-					vectorOrigin = previousVector.origin + previousVector.vector; 
-				} else {
-					vectorOrigin = iI.charge2Transform.position;
-				}
+			//else {
+			//	if (vectorIndex > 0) {
+			//		VectorController previousVector = iI.interactionVector.transform.parent.GetChild (vectorIndex - 1).GetComponent<VectorController>(); 
+			//		vectorOrigin = previousVector.origin + previousVector.vector; 
+			//	} else {
+			//		vectorOrigin = iI.charge2Transform.position;
+			//	}
 				
-			}
+			//}
 
 			iI.interactionVector.SetVector(vectorOrigin,
 				CoulombForce.Fab(iI.charge2Transform.position, iI.charge1Transform.position, iI.q2, iI.q1), iI.arrowColor);
@@ -94,7 +94,7 @@ public class ChargeController : MonoBehaviour
     void Start()
     {
         UpdateChargeList();
-		sceneSettingsManager = GetComponentInParent<SceneSettingsManager> (); 
+		
         this.transform.Find("Sprite").GetComponent<SpriteRenderer>().color = spriteColor;
 
     }
