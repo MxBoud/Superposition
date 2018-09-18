@@ -65,6 +65,7 @@
     <Compile Include="Assets\Desuet\ChargeInfoManagerController.cs" />
     <Compile Include="Assets\Scripts\ActiveObjectManager.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\ChargeContainer.cs" />
     <Compile Include="Assets\Scripts\ChargeController.cs" />
     <Compile Include="Assets\Scripts\ChargeInteractionController.cs" />
     <Compile Include="Assets\Scripts\CoulombForce.cs" />

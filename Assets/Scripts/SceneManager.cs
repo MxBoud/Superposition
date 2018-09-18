@@ -5,7 +5,7 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour
 {
 
-    //public static bool showVectors = true; 
+    //public static bool showVectors = true;
     //public static void SetShowVectors(bool input) {
     //showVectors = input;
     //}
@@ -13,7 +13,7 @@ public class SceneManager : MonoBehaviour
     public  GameObject activeObject;
     public GameObject inspector;
     public bool inspectorState = false;
-    public GameObject chargeContainer;
+    public ChargeContainer chargeContainer;
     public GameObject chargePrefab;
     private bool sceneObjectClicked = false;
 
@@ -22,7 +22,7 @@ public class SceneManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             if(sceneObjectClicked){
                 Debug.Log("ObjectClicked");
-                sceneObjectClicked = false; 
+                sceneObjectClicked = false;
 
             }
             else {
@@ -31,11 +31,11 @@ public class SceneManager : MonoBehaviour
 
             }
 
-           
-            
+
+
         }
         else {
-           
+
         }
     }
 
@@ -43,13 +43,13 @@ public class SceneManager : MonoBehaviour
     public void SetActiveObject(ActiveObjectManager newActiveObject)
     {
 
-        //Deactivate current active object indicator 
+        //Deactivate current active object indicator
 
 
         if (newActiveObject != null)
         {
             if (activeObject != newActiveObject.transform.gameObject)
-            {//Verify if the object is already active. If so, deactivate. 
+            {//Verify if the object is already active. If so, deactivate.
                 if (activeObject != null)
                 {
                     activeObject.GetComponent<ActiveObjectManager>().SetIndicatorUnactive();
@@ -61,7 +61,7 @@ public class SceneManager : MonoBehaviour
             }
             else
             {
-                //Nothing to do 
+                //Nothing to do
 
                 //NullActiveObject ();
             }
@@ -87,8 +87,6 @@ public class SceneManager : MonoBehaviour
             inspector.transform.SetParent(previousActiveObject.transform, false);
 
         }
-<<<<<<< HEAD
-<<<<<<< Updated upstream
         else
         {
             // inspector.transform.SetParent(this.transform, false);
@@ -98,7 +96,9 @@ public class SceneManager : MonoBehaviour
     }
 
     public void ToggleInspector()
+
     {
+
         inspectorState = !inspectorState;
         inspector.SetActive(inspectorState);
         if (activeObject != null)
@@ -107,49 +107,20 @@ public class SceneManager : MonoBehaviour
             //inspector.GetComponent<RectTransform> ().position = Vector3.zero;
         }
 
-=======
-=======
->>>>>>> parent of aea3597... Added an input field for modifying the charge. Almost working.
-        else
-        {
-            // inspector.transform.SetParent(this.transform, false);
-        }
-        //i
 
-    }
-
-    public void ToggleInspector()
-<<<<<<< HEAD
-    {
-        
-=======
-    {
->>>>>>> parent of aea3597... Added an input field for modifying the charge. Almost working.
-        inspectorState = !inspectorState;
-        inspector.SetActive(inspectorState);
-        if (activeObject != null)
-        {
-            inspector.transform.SetParent(activeObject.transform, false);
-            //inspector.GetComponent<RectTransform> ().position = Vector3.zero;
-        }
-
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> parent of aea3597... Added an input field for modifying the charge. Almost working.
     }
 
     //NewCharges
     public void AddCharge()
     {
         SceneObjectMouseDown(); // UGLY
-        
+
         if (activeObject.GetComponent<ChargeController>()!=null){
             GameObject newCharge = Instantiate(chargePrefab, chargeContainer.transform);
             //ChargeController newChargeController = newCharge.GetComponent<ChargeController>();
             //newChargeController = Instantiate(activeObject.GetComponent<ChargeController>());
             newCharge.GetComponent<ChargeController>().spriteColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
-            
+
         }
 
         //newCharge.GetComponent<ChargeController>().chargeInfoManagerController = chargeInfoManagerController;
@@ -170,29 +141,15 @@ public class SceneManager : MonoBehaviour
             //    inspector.transform.SetParent(this.gameObject.transform);
             //}
             inspector.transform.SetParent(this.gameObject.transform, false);
-<<<<<<< HEAD
-<<<<<<< Updated upstream
+
             inspectorState = false;
             inspector.SetActive(inspectorState);
             //NullActiveObject();
-			chargeContainer.RemoveCharge(activeObject); 
-           // Destroy(chargeContainer.transform.GetChild(numCharges - 1).gameObject);
-=======
-            inspectorState = false;
-            inspector.SetActive(inspectorState);
-            //NullActiveObject();
-            // Destroy(chargeContainer.transform.GetChild(numCharges - 1).gameObject);
-            Destroy(activeObject);
-=======
-            inspectorState = false;
-            inspector.SetActive(inspectorState);
-            //NullActiveObject();
-            Destroy(chargeContainer.transform.GetChild(numCharges - 1).gameObject);
->>>>>>> parent of aea3597... Added an input field for modifying the charge. Almost working.
+			         chargeContainer.RemoveCharge(activeObject);
 
 
         }
->>>>>>> Stashed changes
+
 
     }
 
@@ -201,17 +158,17 @@ public class SceneManager : MonoBehaviour
         float fValue = 0;
 
         if (float.TryParse(value, out fValue) ){
-            activeObject.GetComponent<ChargeController>().charge = fValue; 
+            activeObject.GetComponent<ChargeController>().charge = fValue;
         }
 
-       
-        
+
+
     }
 
 
     public void SceneObjectMouseDown(){
-        sceneObjectClicked = true; 
-        
+        sceneObjectClicked = true;
+
     }
 
 
