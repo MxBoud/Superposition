@@ -42,4 +42,9 @@ public class ChargeContainer : MonoBehaviour
         Destroy(chargeToRemove);
 
     }
+    public void UpdateIOOfAllCharges() {
+        foreach (GameObject charge in chargeList){
+            charge.GetComponent<ChargeController>().UpdateChargeList();
+        }
+    }
 }

@@ -5,9 +5,11 @@ using UnityEngine;
 public class ChargeController : MonoBehaviour
 {
     private float charge = 1;
+
     public float Charge {
         set {
             charge = value;
+            chargeContainer.UpdateIOOfAllCharges(); 
             Debug.Log("Charge changed");
         }
         get {
@@ -18,6 +20,9 @@ public class ChargeController : MonoBehaviour
     public Color spriteColor;
     public GameObject vectorPrefab;
     public int parentChildCount;
+    public ChargeContainer chargeContainer; 
+
+
    // public ChargeInfoManagerController chargeInfoManagerController;
 	
 
@@ -83,18 +88,18 @@ public class ChargeController : MonoBehaviour
         {
 			int vectorIndex = iI.interactionVector.transform.GetSiblingIndex (); 
 			Vector2 vectorOrigin;
-			if (true) { //sceneSettingsManager.allVectorsAtOrigin) {
+            if (attachAllVectorAtOrigin) { //sceneSettingsManager.allVectorsAtOrigin) {
 				vectorOrigin = iI.charge2Transform.position;
 			} 
-			//else {
-			//	if (vectorIndex > 0) {
-			//		VectorController previousVector = iI.interactionVector.transform.parent.GetChild (vectorIndex - 1).GetComponent<VectorController>(); 
-			//		vectorOrigin = previousVector.origin + previousVector.vector; 
-			//	} else {
-			//		vectorOrigin = iI.charge2Transform.position;
-			//	}
+			else {
+				if (vectorIndex > 0) {
+					VectorController previousVector = iI.interactionVector.transform.parent.GetChild (vectorIndex - 1).GetComponent<VectorController>(); 
+					vectorOrigin = previousVector.origin + previousVector.vector; 
+				} else {
+					vectorOrigin = iI.charge2Transform.position;
+				}
 				
-			//}
+			}
 
 			iI.interactionVector.SetVector(vectorOrigin,
 				CoulombForce.Fab(iI.charge2Transform.position, iI.charge1Transform.position, iI.q2, iI.q1), iI.arrowColor);
@@ -103,10 +108,11 @@ public class ChargeController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        UpdateChargeList();
+        //UpdateChargeList();
+
 		
         this.transform.Find("Sprite").GetComponent<SpriteRenderer>().color = spriteColor;
-
+        chargeContainer = GetComponentInParent<ChargeContainer>(); 
     }
 
 

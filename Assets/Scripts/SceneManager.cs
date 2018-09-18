@@ -17,8 +17,12 @@ public class SceneManager : MonoBehaviour
 
     public GameObject chargePrefab;
     private bool sceneObjectClicked = false;
-    public InputField chargeInputField; 
+  
     public ChargeContainer chargeContainer;
+
+    //Inspector objects: 
+    public InputField chargeInputField;
+    public Toggle allVectorsToOriginToggle; 
 
     public void Update()
     {
@@ -75,8 +79,22 @@ public class SceneManager : MonoBehaviour
             NullActiveObject();
         }
 
+        UpdateInspectorContent(); 
 
+    }
+    void UpdateInspectorContent() {
+        ChargeController chargeController; 
+        if (activeObject != null){
+            chargeController = activeObject.GetComponent<ChargeController>(); 
+            if (chargeController != null){
+                chargeInputField.text = chargeController.Charge.ToString(); 
+            }
+            else {
+                chargeInputField.text = "error";
+            }
+        }
 
+        //chargeInputField.text = 
     }
     void NullActiveObject()
     {
@@ -169,6 +187,10 @@ public class SceneManager : MonoBehaviour
 
 
 
+    }
+    public void ToggleAllVectorToOrigin(){
+        activeObject.GetComponent<ChargeController>().attachAllVectorAtOrigin = allVectorsToOriginToggle.isOn;
+        
     }
 
 
