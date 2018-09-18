@@ -89,6 +89,7 @@ public class SceneManager : MonoBehaviour
             inspector.transform.SetParent(previousActiveObject.transform, false);
 
         }
+<<<<<<< Updated upstream
         else
         {
             // inspector.transform.SetParent(this.transform, false);
@@ -107,6 +108,27 @@ public class SceneManager : MonoBehaviour
             //inspector.GetComponent<RectTransform> ().position = Vector3.zero;
         }
 
+=======
+        else
+        {
+            // inspector.transform.SetParent(this.transform, false);
+        }
+        //i
+
+    }
+
+    public void ToggleInspector()
+    {
+        
+        inspectorState = !inspectorState;
+        inspector.SetActive(inspectorState);
+        if (activeObject != null)
+        {
+            inspector.transform.SetParent(activeObject.transform, false);
+            //inspector.GetComponent<RectTransform> ().position = Vector3.zero;
+        }
+
+>>>>>>> Stashed changes
     }
 
     //NewCharges
@@ -142,16 +164,38 @@ public class SceneManager : MonoBehaviour
             //    inspector.transform.SetParent(this.gameObject.transform);
             //}
             inspector.transform.SetParent(this.gameObject.transform, false);
+<<<<<<< Updated upstream
             inspectorState = false;
             inspector.SetActive(inspectorState);
             //NullActiveObject();
 			chargeContainer.RemoveCharge(activeObject); 
            // Destroy(chargeContainer.transform.GetChild(numCharges - 1).gameObject);
+=======
+            inspectorState = false;
+            inspector.SetActive(inspectorState);
+            //NullActiveObject();
+            // Destroy(chargeContainer.transform.GetChild(numCharges - 1).gameObject);
+            Destroy(activeObject);
 
 
         }
+>>>>>>> Stashed changes
 
     }
+
+    public void ChargeValueChanged(string value){
+        Debug.Log(value);
+        float fValue = 0;
+
+        if (float.TryParse(value, out fValue) ){
+            activeObject.GetComponent<ChargeController>().charge = fValue; 
+        }
+
+       
+        
+    }
+
+
     public void SceneObjectMouseDown(){
         sceneObjectClicked = true; 
         
