@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SceneManager : MonoBehaviour
 {
@@ -13,9 +14,10 @@ public class SceneManager : MonoBehaviour
     public  GameObject activeObject;
     public GameObject inspector;
     public bool inspectorState = false;
-    public GameObject chargeContainer;
+    public ChargeContainer chargeContainer;
     public GameObject chargePrefab;
     private bool sceneObjectClicked = false;
+	public InputField chargeInputField; 
 
     public void Update()
     {
@@ -113,10 +115,12 @@ public class SceneManager : MonoBehaviour
         SceneObjectMouseDown(); // UGLY
         
         if (activeObject.GetComponent<ChargeController>()!=null){
-            GameObject newCharge = Instantiate(chargePrefab, chargeContainer.transform);
+			chargeContainer.AddCharge (); 
+            //GameObject newCharge = Instantiate(chargePrefab, chargeContainer.transform);
+			//TODO use
             //ChargeController newChargeController = newCharge.GetComponent<ChargeController>();
             //newChargeController = Instantiate(activeObject.GetComponent<ChargeController>());
-            newCharge.GetComponent<ChargeController>().spriteColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
+            //newCharge.GetComponent<ChargeController>().spriteColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
             
         }
 
@@ -141,7 +145,8 @@ public class SceneManager : MonoBehaviour
             inspectorState = false;
             inspector.SetActive(inspectorState);
             //NullActiveObject();
-            Destroy(chargeContainer.transform.GetChild(numCharges - 1).gameObject);
+			chargeContainer.RemoveCharge(activeObject); 
+           // Destroy(chargeContainer.transform.GetChild(numCharges - 1).gameObject);
 
 
         }
@@ -151,6 +156,20 @@ public class SceneManager : MonoBehaviour
         sceneObjectClicked = true; 
         
     }
+	public void UpdateChargeValue() {
+		float parsedNumber; 
+		//Debug.Log (chargeInputField.text);
+		if (float.TryParse(chargeInputField.text,out parsedNumber)) {
+			//Debug.Log (parsedNumber);
+			if (activeObject != null) {
+				ChargeController activeChargeController = activeObject.GetComponent<ChargeController> (); 
+				if (activeChargeController != null) {
+					activeChargeController.Charge = parsedNumber; 
+				}
+			}
+
+		}
+	}
 
 
 

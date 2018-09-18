@@ -7,7 +7,6 @@ public class ChargeInteractionController : MonoBehaviour {
     int childCount; 
     //Transform[] interactionVectorList; 
     public GameObject vectorPrefab;
-	public NetForceController netForceController ;
 	//public SceneSettingsManager sceneSettingManager; 
 
 	public void SceneSettingsManagerChanged() {
