@@ -260,7 +260,6 @@ MonoBehaviour:
     type: 2}
   parentChildCount: 0
   chargeContainer: {fileID: 0}
-  showResultingVector: 0
   attachAllVectorAtOrigin: 1
   interactionInfos: []
 --- !u!114 &114603438323900808

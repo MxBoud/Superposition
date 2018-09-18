@@ -22,7 +22,9 @@ public class SceneManager : MonoBehaviour
 
     //Inspector objects: 
     public InputField chargeInputField;
-    public Toggle allVectorsToOriginToggle; 
+    public Toggle allVectorsToOriginToggle;
+    public Toggle showForcesToggle;
+    public Toggle showNetForceToggle; 
 
     public void Update()
     {
@@ -87,7 +89,10 @@ public class SceneManager : MonoBehaviour
         if (activeObject != null){
             chargeController = activeObject.GetComponent<ChargeController>(); 
             if (chargeController != null){
-                chargeInputField.text = chargeController.Charge.ToString(); 
+                chargeInputField.text = chargeController.Charge.ToString();
+                showForcesToggle.isOn = chargeController.ShowForces;
+                showNetForceToggle.isOn = chargeController.ShowNetForce;
+
             }
             else {
                 chargeInputField.text = "error";
@@ -197,6 +202,15 @@ public class SceneManager : MonoBehaviour
     public void SceneObjectMouseDown(){
         sceneObjectClicked = true;
 
+    }
+    public void ToggleShowForce() {
+        activeObject.GetComponent<ChargeController>().ShowForces = showForcesToggle.isOn;
+
+        
+    }
+    public void ToggleShowNetForce(){
+        activeObject.GetComponent<ChargeController>().ShowNetForce = showNetForceToggle.isOn;
+        
     }
 
 

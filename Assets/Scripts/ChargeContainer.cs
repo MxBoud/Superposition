@@ -34,6 +34,7 @@ public class ChargeContainer : MonoBehaviour
         //newChargeController = Instantiate(activeObject.GetComponent<ChargeController>());
         newCharge.GetComponent<ChargeController>().spriteColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
         chargeList.Add(newCharge);
+        UpdateIOOfAllCharges();
 
     }
     public void RemoveCharge(GameObject chargeToRemove)

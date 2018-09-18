@@ -20,17 +20,43 @@ public class ChargeController : MonoBehaviour
     public Color spriteColor;
     public GameObject vectorPrefab;
     public int parentChildCount;
-    public ChargeContainer chargeContainer; 
+    public ChargeContainer chargeContainer;
+    private CoulombForceVectorsController coulombForceVectorsController;
+    private NetForceController netForceController; 
 
 
    // public ChargeInfoManagerController chargeInfoManagerController;
 	
 
 
-	public bool showResultingVector = false; 
+	//public bool showResultingVector = true; 
 
-	public  bool attachAllVectorAtOrigin = true; 
+	public  bool attachAllVectorAtOrigin = true;
 
+    private bool showForces = true; 
+    public bool ShowForces {
+        get {
+            return showForces;
+        }
+        set {
+            Debug.Log("ValueChanged");
+            showForces = value;
+            coulombForceVectorsController.transform.gameObject.SetActive(value);
+        }
+    }
+
+    private bool showNetForce = true; 
+    public bool ShowNetForce {
+        set{
+            showNetForce = value;
+            netForceController.transform.gameObject.SetActive(value); 
+
+        }
+        get{
+            return showNetForce; 
+            
+        }
+    }
 
 
     //Transform[] chargeList;
@@ -112,7 +138,9 @@ public class ChargeController : MonoBehaviour
 
 		
         this.transform.Find("Sprite").GetComponent<SpriteRenderer>().color = spriteColor;
-        chargeContainer = GetComponentInParent<ChargeContainer>(); 
+        chargeContainer = GetComponentInParent<ChargeContainer>();
+        coulombForceVectorsController = GetComponentInChildren<CoulombForceVectorsController>();
+        netForceController = GetComponentInChildren<NetForceController>(); 
     }
 
 
@@ -172,10 +200,3 @@ public class InteractionInfo {
 
 }
 
-public class ChargeParameter {
-    public float value = 1;
-    public Color color;
-    public bool showIndividualVectors;
-    public bool showResultingVector;
-
-}
