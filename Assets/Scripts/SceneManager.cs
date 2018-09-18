@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class SceneManager : MonoBehaviour
 {
@@ -13,9 +14,11 @@ public class SceneManager : MonoBehaviour
     public  GameObject activeObject;
     public GameObject inspector;
     public bool inspectorState = false;
-    public ChargeContainer chargeContainer;
+
     public GameObject chargePrefab;
     private bool sceneObjectClicked = false;
+    public InputField chargeInputField; 
+    public ChargeContainer chargeContainer;
 
     public void Update()
     {
@@ -116,10 +119,12 @@ public class SceneManager : MonoBehaviour
         SceneObjectMouseDown(); // UGLY
 
         if (activeObject.GetComponent<ChargeController>()!=null){
-            GameObject newCharge = Instantiate(chargePrefab, chargeContainer.transform);
+            chargeContainer.AddCharge();
+
+            //GameObject newCharge = Instantiate(chargePrefab, chargeContainer.transform);
             //ChargeController newChargeController = newCharge.GetComponent<ChargeController>();
             //newChargeController = Instantiate(activeObject.GetComponent<ChargeController>());
-            newCharge.GetComponent<ChargeController>().spriteColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
+           // newCharge.GetComponent<ChargeController>().spriteColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
 
         }
 
@@ -153,12 +158,13 @@ public class SceneManager : MonoBehaviour
 
     }
 
-    public void ChargeValueChanged(string value){
-        Debug.Log(value);
+    public void ChargeValueChanged(){
+       // Debug.Log(value);
         float fValue = 0;
 
-        if (float.TryParse(value, out fValue) ){
-            activeObject.GetComponent<ChargeController>().charge = fValue;
+        if (float.TryParse(chargeInputField.text, out fValue) ){
+            Debug.Log(fValue);
+            activeObject.GetComponent<ChargeController>().Charge = fValue;
         }
 
 

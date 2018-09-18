@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class ChargeController : MonoBehaviour
 {
-    public float charge;
+    private float charge = 1;
+    public float Charge {
+        set {
+            charge = value;
+            Debug.Log("Charge changed");
+        }
+        get {
+            return charge; 
+        }
+    }
+
     public Color spriteColor;
     public GameObject vectorPrefab;
     public int parentChildCount;
@@ -47,8 +57,8 @@ public class ChargeController : MonoBehaviour
             if (this.transform != charge2Transform)
             {
                 interactionInfos[interactionVectorIndex] = new InteractionInfo();
-                interactionInfos[interactionVectorIndex].q1 = 1; //charge1.gameObject.GetComponent<ChargeController>().charge;
-                interactionInfos[interactionVectorIndex].q2 = 1;//charge2.gameObject.GetComponent<ChargeController>().charge;
+                interactionInfos[interactionVectorIndex].q1 = Charge; //charge1.gameObject.GetComponent<ChargeController>().charge;
+                interactionInfos[interactionVectorIndex].q2 = charge2Transform.gameObject.GetComponent<ChargeController>().Charge;
                 interactionInfos[interactionVectorIndex].charge1Transform = charge1Transform;
                 interactionInfos[interactionVectorIndex].charge2Transform = charge2Transform;
                 interactionInfos[interactionVectorIndex].arrowColor = spriteColor;
