@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SceneManager : MonoBehaviour
 {
@@ -14,10 +13,9 @@ public class SceneManager : MonoBehaviour
     public  GameObject activeObject;
     public GameObject inspector;
     public bool inspectorState = false;
-    public ChargeContainer chargeContainer;
+    public GameObject chargeContainer;
     public GameObject chargePrefab;
     private bool sceneObjectClicked = false;
-	public InputField chargeInputField; 
 
     public void Update()
     {
@@ -89,6 +87,7 @@ public class SceneManager : MonoBehaviour
             inspector.transform.SetParent(previousActiveObject.transform, false);
 
         }
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         else
         {
@@ -109,6 +108,8 @@ public class SceneManager : MonoBehaviour
         }
 
 =======
+=======
+>>>>>>> parent of aea3597... Added an input field for modifying the charge. Almost working.
         else
         {
             // inspector.transform.SetParent(this.transform, false);
@@ -118,8 +119,12 @@ public class SceneManager : MonoBehaviour
     }
 
     public void ToggleInspector()
+<<<<<<< HEAD
     {
         
+=======
+    {
+>>>>>>> parent of aea3597... Added an input field for modifying the charge. Almost working.
         inspectorState = !inspectorState;
         inspector.SetActive(inspectorState);
         if (activeObject != null)
@@ -128,7 +133,10 @@ public class SceneManager : MonoBehaviour
             //inspector.GetComponent<RectTransform> ().position = Vector3.zero;
         }
 
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of aea3597... Added an input field for modifying the charge. Almost working.
     }
 
     //NewCharges
@@ -137,12 +145,10 @@ public class SceneManager : MonoBehaviour
         SceneObjectMouseDown(); // UGLY
         
         if (activeObject.GetComponent<ChargeController>()!=null){
-			chargeContainer.AddCharge (); 
-            //GameObject newCharge = Instantiate(chargePrefab, chargeContainer.transform);
-			//TODO use
+            GameObject newCharge = Instantiate(chargePrefab, chargeContainer.transform);
             //ChargeController newChargeController = newCharge.GetComponent<ChargeController>();
             //newChargeController = Instantiate(activeObject.GetComponent<ChargeController>());
-            //newCharge.GetComponent<ChargeController>().spriteColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
+            newCharge.GetComponent<ChargeController>().spriteColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
             
         }
 
@@ -164,6 +170,7 @@ public class SceneManager : MonoBehaviour
             //    inspector.transform.SetParent(this.gameObject.transform);
             //}
             inspector.transform.SetParent(this.gameObject.transform, false);
+<<<<<<< HEAD
 <<<<<<< Updated upstream
             inspectorState = false;
             inspector.SetActive(inspectorState);
@@ -176,6 +183,12 @@ public class SceneManager : MonoBehaviour
             //NullActiveObject();
             // Destroy(chargeContainer.transform.GetChild(numCharges - 1).gameObject);
             Destroy(activeObject);
+=======
+            inspectorState = false;
+            inspector.SetActive(inspectorState);
+            //NullActiveObject();
+            Destroy(chargeContainer.transform.GetChild(numCharges - 1).gameObject);
+>>>>>>> parent of aea3597... Added an input field for modifying the charge. Almost working.
 
 
         }
@@ -200,20 +213,6 @@ public class SceneManager : MonoBehaviour
         sceneObjectClicked = true; 
         
     }
-	public void UpdateChargeValue() {
-		float parsedNumber; 
-		//Debug.Log (chargeInputField.text);
-		if (float.TryParse(chargeInputField.text,out parsedNumber)) {
-			//Debug.Log (parsedNumber);
-			if (activeObject != null) {
-				ChargeController activeChargeController = activeObject.GetComponent<ChargeController> (); 
-				if (activeChargeController != null) {
-					activeChargeController.Charge = parsedNumber; 
-				}
-			}
-
-		}
-	}
 
 
 

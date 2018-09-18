@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BackGroundHandler.cs" />
-    <Compile Include="Assets\ChargeContainer.cs" />
     <Compile Include="Assets\Desuet\ChargeInfoManagerController.cs" />
     <Compile Include="Assets\Scripts\ActiveObjectManager.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
