@@ -13,4 +13,6 @@ Use the ASDW keys to move the screen, scroll to zoom in and out and right click 
 - Improve the scroll zoom algorithm so it takes the mouse position into account. 
 - Find a way to select no charge to be active. 
 - Show charge position and vector values in the inspector. 
-- Implement a color palette so that the colors of charge are predetermined instead of random. 
+- Implement a color palette so that the colors of charge are predetermined instead of random.
+- Update screenshot picture. 
+- Implement an entry screen with instructions. 
