@@ -7,9 +7,9 @@ public class SceneManager : MonoBehaviour
 {
 
     //public static bool showVectors = true;
-    //public static void SetShowVectors(bool input) {
-    //showVectors = input;
+    public static SceneManager defaultSceneManager;
     //}
+    
     private GameObject previousActiveObject;
     public  GameObject activeObject;
     public GameObject inspector;
@@ -24,8 +24,13 @@ public class SceneManager : MonoBehaviour
     public InputField chargeInputField;
     public Toggle allVectorsToOriginToggle;
     public Toggle showForcesToggle;
-    public Toggle showNetForceToggle; 
+    public Toggle showNetForceToggle;
+    public Text positionText;
 
+    private void Start()
+    {
+        defaultSceneManager = this; //Is this ugly? 
+    }
     public void Update()
     {
         if (Input.GetMouseButtonDown(0)){
@@ -210,7 +215,10 @@ public class SceneManager : MonoBehaviour
     }
     public void ToggleShowNetForce(){
         activeObject.GetComponent<ChargeController>().ShowNetForce = showNetForceToggle.isOn;
-        
+
+    }
+    public void UpdateActiveObjPosition(Vector3 position) {
+        positionText.text = "("+position.x.ToString()+ ","+position.y.ToString()+")"; 
     }
 
 

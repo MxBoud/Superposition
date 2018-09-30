@@ -33,6 +33,7 @@ public class ChargeContainer : MonoBehaviour
         //ChargeController newChargeController = newCharge.GetComponent<ChargeController>();
         //newChargeController = Instantiate(activeObject.GetComponent<ChargeController>());
         newCharge.GetComponent<ChargeController>().spriteColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
+        //newCharge.GetComponent<UserController>().sceneManager = SceneManager.Default;
         chargeList.Add(newCharge);
         UpdateIOOfAllCharges();
 

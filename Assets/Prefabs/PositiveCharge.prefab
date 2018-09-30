@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chargeSpriteTransform: {fileID: 4802256700446652}
+  sceneManager: {fileID: 0}
 --- !u!114 &114501681955093182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,7 +261,7 @@ MonoBehaviour:
     type: 2}
   parentChildCount: 0
   chargeContainer: {fileID: 0}
-  attachAllVectorAtOrigin: 1
+  attachAllVectorAtOrigin: 0
   interactionInfos: []
 --- !u!114 &114603438323900808
 MonoBehaviour:

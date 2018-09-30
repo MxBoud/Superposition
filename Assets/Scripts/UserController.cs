@@ -8,13 +8,16 @@ public class UserController : MonoBehaviour {
     private Vector3 initialMousePosition;
     private Camera cam; 
 	public Transform chargeSpriteTransform;
+    public SceneManager sceneManager; 
 
     private ChargeController chargeController; 
 
 	// Use this for initialization
 	void Start () {
         cam = Camera.main;
-        chargeController = GetComponent<ChargeController>(); 
+        chargeController = GetComponent<ChargeController>();
+      //  sceneManager = SceneManager.defaultSceneManager;
+
 	}
 	
 	// Update is called once per frame
@@ -28,6 +31,7 @@ public class UserController : MonoBehaviour {
         initialObjectPosition = this.transform.position;
         initialMousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
 		chargeSpriteTransform.localScale = Vector3.one * 1.3f;
+        sceneManager.UpdateActiveObjPosition(this.transform.position);
         //this.transform.localScale = new Vector3(2, 2, 2);
         //Debug.Log("ButtonDown");
     }
@@ -50,6 +54,7 @@ public class UserController : MonoBehaviour {
         //else if (dontLock)
         //{
             this.transform.position = initialObjectPosition + displacement;
+        sceneManager.UpdateActiveObjPosition(this.transform.position);
         //}
         //else
         //{
